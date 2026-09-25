@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Activity Gallery - PT. BAHTERA ANUGERAH SENTOSA</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="PT. BAHTERA ANUGERAH SENTOSA - Professional Crewing & Manning Services with SIUKAK No. 58.58-R/2024 & SIUPPAK No. 65.21/2016. Your trusted international maritime partner.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg?v=2">
+    <link rel="shortcut icon" type="image/svg+xml" href="images/logo-emblem.svg?v=2">
+    <link rel="apple-touch-icon" href="images/logo-emblem.svg?v=2">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles & Scripts -->
+    <link rel="preload" as="style" href="build/assets/app-CBwF-SKm.css" /><link rel="stylesheet" href="build/assets/app-CBwF-SKm.css" />
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 100% Reliable Language Switching Rules */
+        html[data-lang="id"] .lang-en-only {
+            display: none !important;
+        }
+        html[data-lang="en"] .lang-id-only {
+            display: none !important;
+        }
+
+        /* Active Language Flag Pill Buttons */
+        .lang-flag-btn.lang-active {
+            background-color: #FFB800 !important;
+            color: #061838 !important;
+            font-weight: 900 !important;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+        }
+        .lang-flag-btn:not(.lang-active) {
+            color: #FFFFFF !important;
+            background-color: transparent !important;
+            opacity: 0.85;
+        }
+        .lang-flag-btn:not(.lang-active):hover {
+            opacity: 1;
+            background-color: rgba(255,255,255,0.1) !important;
+        }
+    </style>
+
+    <script>
+        // Global Instant Language Switcher
+        window.setLanguage = function(lang) {
+            if (lang !== 'id' && lang !== 'en') lang = 'id';
+            
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang);
+            
+            try {
+                localStorage.setItem('pt_bas_lang', lang);
+            } catch (e) {}
+
+            document.querySelectorAll('[data-set-lang]').forEach(function(el) {
+                var btnLang = el.getAttribute('data-set-lang');
+                if (btnLang === lang) {
+                    el.classList.add('lang-active');
+                } else {
+                    el.classList.remove('lang-active');
+                }
+            });
+        };
+
+        // Initialize immediately
+        (function() {
+            var initialLang = 'id';
+            try {
+                initialLang = localStorage.getItem('pt_bas_lang') || 'id';
+            } catch (e) {}
+            document.documentElement.setAttribute('data-lang', initialLang);
+            document.documentElement.setAttribute('lang', initialLang);
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var currentLang = document.documentElement.getAttribute('data-lang') || 'id';
+            window.setLanguage(currentLang);
+        });
+    </script>
+<script id="browser-logger-active">
+(function() {
+    const ENDPOINT = 'http://127.0.0.1:8000/_boost/browser-logs';
+    const logQueue = [];
+    let flushTimeout = null;
+    const captureTypes = ["error","warning","info","log","debug","table"];
+
+    console.log('🔍 Browser logger active (MCP server detected). Posting to: ' + ENDPOINT);
+
+    // Store original console methods
+    const originalConsole = {
+        log: console.log,
+        debug: console.debug,
+        info: console.info,
+        error: console.error,
+        warn: console.warn,
+        table: console.table
+    };
+
+    // Walk own enumerable keys so JSON.stringify cannot auto-invoke a proxy fake toJSON (e.g. Livewire's `$wire`) and fire a real request.
+    function toSafeValue(value, seen) {
+        if (value === null || typeof value !== 'object') {
+            return value;
+        }
+        if (value instanceof Error) {
+            return { name: value.name, message: value.message, stack: value.stack };
+        }
+        // Date has no own enumerable keys, so the walk below would collapse it to {}.
+        if (value instanceof Date) {
+            return value.toISOString();
+        }
+        if (seen.has(value)) {
+            return '[Circular]';
+        }
+        seen.add(value);
+        if (Array.isArray(value)) {
+            return value.map((item) => toSafeValue(item, seen));
+        }
+        const plain = {};
+        for (const key of Object.keys(value)) {
+            if (key === 'toJSON') continue;
+            try {
+                plain[key] = toSafeValue(value[key], seen);
+            } catch (e) {
+                plain[key] = '[Unreadable]';
+            }
+        }
+        return plain;
+    }
+
+    // Helper to safely stringify values
+    function safeStringify(obj) {
+        return JSON.stringify(toSafeValue(obj, new WeakSet()));
+    }
+
+    // Normalize log type for consistency (e.g., 'warn' to 'warning')
+    function normalizeType(type) {
+        return type === 'warn' ? 'warning' : type;
+    }
+
+    // Determine if a log type should be captured based on configured levels
+    function shouldCapture(type) {
+        return captureTypes.includes(normalizeType(type));
+    }
+
+    // Batch and send logs
+    function flushLogs() {
+        if (logQueue.length === 0) return;
+
+        const batch = logQueue.splice(0, logQueue.length);
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({ logs: batch })
+        }).catch(err => {
+            // Silently fail to avoid infinite loops
+            originalConsole.error('Failed to send logs:', err);
+        });
+    }
+
+    // Debounced flush (100ms)
+    function scheduleFlush() {
+        if (flushTimeout) clearTimeout(flushTimeout);
+        flushTimeout = setTimeout(flushLogs, 100);
+    }
+
+    // Intercept console methods
+    ['log', 'debug', 'info', 'error', 'warn', 'table'].forEach(method => {
+        console[method] = function(...args) {
+            // Call original method
+            originalConsole[method].apply(console, args);
+
+            // Capture log data
+            try {
+                if (!shouldCapture(method)) {
+                    return;
+                }
+
+                logQueue.push({
+                    type: method,
+                    timestamp: new Date().toISOString(),
+                    data: args.map(arg => {
+                        try {
+                            return typeof arg === 'object' ? JSON.parse(safeStringify(arg)) : arg;
+                        } catch (e) {
+                            return String(arg);
+                        }
+                    }),
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            } catch (e) {
+                // Fail silently
+            }
+        };
+    });
+
+    // Global error handlers for uncaught errors
+    const originalOnError = window.onerror;
+    window.onerror = function boostErrorHandler(errorMsg, url, lineNumber, colNumber, error) {
+        try {
+            if (shouldCapture('error')) {
+                logQueue.push({
+                    type: 'uncaught_error',
+                    timestamp: new Date().toISOString(),
+                    data: [{
+                        message: errorMsg,
+                        filename: url,
+                        lineno: lineNumber,
+                        colno: colNumber,
+                        error: error ? {
+                            name: error.name,
+                            message: error.message,
+                            stack: error.stack
+                        } : null
+                    }],
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            }
+
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Call original handler if it exists
+        if (originalOnError && typeof originalOnError === 'function') {
+            return originalOnError(errorMsg, url, lineNumber, colNumber, error);
+        }
+
+        // Let the error continue to propagate
+        return false;
+    }
+    window.addEventListener('error', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'window_error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    error: event.error ? {
+                        name: event.error.name,
+                        message: event.error.message,
+                        stack: event.error.stack
+                    } : null
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the error continue to propagate
+        return false;
+    });
+    window.addEventListener('unhandledrejection', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: 'Unhandled Promise Rejection',
+                    reason: toSafeValue(event.reason, new WeakSet())
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the rejection continue to propagate
+        return false;
+    });
+
+    // Flush on page unload
+    window.addEventListener('beforeunload', () => {
+        if (logQueue.length > 0) {
+            navigator.sendBeacon(ENDPOINT, JSON.stringify({ logs: logQueue }));
+        }
+    });
+})();
+</script>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
+
+    <!-- Main Navigation Header (Clean Corporate Navbar with Slim Topbar) -->
+    <!-- FIXED / STICKY HEADER (Topbar + Main Navigation stay pinned when scrolling) -->
+<header class="sticky top-0 z-50 w-full shadow-lg">
+
+    <!-- 1. SLIM CORPORATE TOPBAR (Dark Navy with Gold Accents) -->
+    <div class="bg-[#061838] text-slate-200 text-xs border-b border-white/10 relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+            
+            <!-- Left: Contact Info -->
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] sm:text-xs">
+                <a href="tel:+622189106967" class="inline-flex items-center text-slate-300 font-medium hover:text-[#FFB800] transition">
+                    <svg class="w-3.5 h-3.5 mr-1.5 text-[#FFB800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    (+62) 21 89106967
+                </a>
+                <span class="text-white/20 hidden sm:inline">|</span>
+                <div class="hidden sm:inline-flex items-center gap-1.5 text-slate-300 font-medium">
+                    <svg class="w-3.5 h-3.5 mr-1 text-[#FFB800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <a href="mailto:pt_basn@outlook.co.id" class="hover:text-[#FFB800] transition">pt_basn@outlook.co.id</a>
+                    <span class="text-white/25">/</span>
+                    <a href="mailto:pt_basn@yahoo.co.id" class="hover:text-[#FFB800] transition">pt_basn@yahoo.co.id</a>
+                </div>
+            </div>
+
+            <!-- Right: Operational Hours & Language Switcher -->
+            <div class="flex items-center space-x-4 text-[11px] sm:text-xs ml-auto">
+                <span class="hidden sm:inline text-slate-300 font-medium">
+                    <span class="text-[#FFB800] font-bold">&bull;</span>
+                    <span class="lang-id-only">Senin &ndash; Jumat: 08:00 &ndash; 16:00 WIB</span>
+                    <span class="lang-en-only">Mon &ndash; Fri: 08:00 &ndash; 16:00 WIB (UTC+7)</span>
+                </span>
+                
+                <!-- Language Switcher Flags Pill (ID / EN) -->
+                <div class="flex items-center bg-black/30 backdrop-blur-md p-1 rounded-full border border-white/20 gap-1 shadow-inner">
+                    <!-- ID Button with Indonesia Flag SVG -->
+                    <button type="button" data-set-lang="id" onclick="window.setLanguage('id')" class="lang-flag-btn flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition cursor-pointer" title="Bahasa Indonesia">
+                        <svg class="w-4 h-2.5 rounded-[2px] overflow-hidden shadow-xs border border-white/40 flex-shrink-0" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="640" height="240" fill="#E70011"/>
+                            <rect y="240" width="640" height="240" fill="#FFFFFF"/>
+                        </svg>
+                        <span>ID</span>
+                    </button>
+                    <span class="text-white/30 text-[10px]">|</span>
+                    <!-- EN Button with UK Flag SVG -->
+                    <button type="button" data-set-lang="en" onclick="window.setLanguage('en')" class="lang-flag-btn flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition cursor-pointer" title="English">
+                        <svg class="w-4 h-2.5 rounded-[2px] overflow-hidden shadow-xs border border-white/40 flex-shrink-0" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="30" fill="#012169"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                        </svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. MAIN SOLID YELLOW NAVBAR -->
+    <div class="bg-[#FFB800] border-b-2 border-amber-500 shadow-md transition-all duration-300" style="background-color: #FFB800 !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            
+            <!-- Company Logo & Brand -->
+            <a href="index.html" class="flex items-center space-x-3.5 group py-2 focus:outline-none">
+                <div class="w-12 h-12 flex-shrink-0 transition transform group-hover:scale-105 duration-200 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center">
+                    <img src="images/logo-emblem.svg" alt="Logo PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="text-[10px] font-black tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white leading-none shadow-sm">PT</span>
+                        <span class="text-base sm:text-lg font-black tracking-tight text-[#061838]">
+                            BAHTERA <span class="text-red-700">ANUGERAH</span> SENTOSA
+                        </span>
+                    </div>
+                    <span class="text-[10px] sm:text-[11px] font-extrabold text-[#061838]/90 tracking-wide">
+                        <span class="lang-id-only">Agensi Pengawakan &amp; Penyaluran Pelaut Resmi</span>
+                        <span class="lang-en-only">Official Maritime Crewing &amp; Manning Agency</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links (Clean Underline Only — Strictly NO Box Backgrounds or Focus Rings) -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                <!-- Home Link -->
+                <a href="index.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Beranda</span>
+                    <span class="lang-en-only">Home</span>
+                </a>
+
+                <!-- Our Service Link -->
+                <a href="services.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Layanan Kami</span>
+                    <span class="lang-en-only">Our Services</span>
+                </a>
+
+                <!-- Our Team Link -->
+                <a href="team.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Tim Kami</span>
+                    <span class="lang-en-only">Our Team</span>
+                </a>
+
+                <!-- Gallery Link -->
+                <a href="gallery.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-red-700 border-red-700 font-black">
+                    <span class="lang-id-only">Galeri</span>
+                    <span class="lang-en-only">Gallery</span>
+                </a>
+
+                <!-- Contact Us Link -->
+                <a href="contact.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Hubungi Kami</span>
+                    <span class="lang-en-only">Contact Us</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="flex items-center space-x-3 lg:hidden">
+                <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl text-[#061838] bg-black/10 hover:bg-black/20 focus:outline-none" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b-2 border-amber-500 bg-[#FFB800] px-4 pt-3 pb-6 space-y-2 shadow-xl">
+        <a href="index.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Beranda</span>
+            <span class="lang-en-only">Home</span>
+        </a>
+        <a href="services.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Layanan Kami</span>
+            <span class="lang-en-only">Our Services</span>
+        </a>
+        <a href="team.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Tim Kami</span>
+            <span class="lang-en-only">Our Team</span>
+        </a>
+        <a href="gallery.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-red-700 border-red-700 font-black">
+            <span class="lang-id-only">Galeri</span>
+            <span class="lang-en-only">Gallery</span>
+        </a>
+        <a href="contact.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Hubungi Kami</span>
+            <span class="lang-en-only">Contact Us</span>
+        </a>
+    </div>
+    </div>
+</header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+<!-- Top Subpage Header with PT. BKS Logo -->
+<section class="relative min-h-[42vh] sm:min-h-[48vh] lg:min-h-[52vh] flex items-center py-20 sm:py-28 lg:py-36 text-white overflow-hidden border-b-2 border-[#FFB800]/30 shadow-2xl">
+    <!-- Real Ship Photo Background with Home Hero Blue Transparency Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="images/hero-banner.jpg" alt="Armada Kapal PT. Bahtera Anugerah Sentosa" class="w-full h-full object-cover object-center scale-105 filter saturate-110">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#061838]/65 via-[#061838]/55 to-[#061838]/75"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            <!-- Left Header Content -->
+            <div class="space-y-4 text-center md:text-left fade-in-left">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight drop-shadow-md">
+                    <span class="lang-id-only">Galeri <span class='text-[#FFB800]'>Aktivitas</span></span>
+                    <span class="lang-en-only">Activity <span class='text-[#FFB800]'>Gallery</span></span>
+                </h1>
+
+                <p class="text-sm sm:text-base md:text-lg text-slate-100 max-w-2xl font-medium leading-relaxed drop-shadow-sm">
+                    <span class="lang-id-only">Dokumentasi Pelatihan, Penempatan, dan Operasional Pelaut PT. Bahtera Anugerah Sentosa</span>
+                    <span class="lang-en-only">Documentation of Training, Deployment, and Seafarer Operations</span>
+                </p>
+            </div>
+
+            <!-- Right: Corporate Emblem Badge -->
+            <div class="flex-shrink-0 flex items-center space-x-4 bg-[#061838]/85 backdrop-blur-md px-6 py-5 rounded-2xl shadow-2xl border-2 border-[#FFB800]/50 fade-in-right">
+                <div class="w-14 h-14 flex-shrink-0 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center">
+                    <img src="images/logo-emblem.svg" alt="Emblem PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="text-xs sm:text-sm font-black text-white tracking-wide">PT. BAHTERA ANUGERAH SENTOSA</span>
+                    <span class="text-[10px] sm:text-xs text-[#FFB800] font-extrabold uppercase tracking-wider">Official Crewing Agency</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ACTIVITY GALLERY SECTION -->
+<section class="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <div class="text-center max-w-3xl mx-auto fade-in-section">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#061838] tracking-tight uppercase">
+                <span class="lang-id-only">Galeri Kegiatan</span>
+                <span class="lang-en-only">Activity Gallery</span>
+            </h2>
+        </div>
+
+        <!-- Gallery Grid with Lightbox Triggers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Item 1: Proses Recruitment -->
+            <div class="gallery-item-trigger group rounded-3xl overflow-hidden bg-white border-2 border-slate-200/80 hover:border-[#FFB800] shadow-md hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 fade-in-section delay-100"
+                 data-img-src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80&fit=crop">
+                
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop" alt="Proses Recruitment" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/85 via-transparent to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-md">
+                        <span class="lang-id-only">Rekrutmen</span>
+                        <span class="lang-en-only">Recruitment</span>
+                    </span>
+                </div>
+                
+                <div class="p-7 bg-white space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">
+                            <span class="lang-id-only">Seleksi &amp; Uji Kompetensi</span>
+                            <span class="lang-en-only">Screening &amp; Assessment</span>
+                        </span>
+                        <span class="text-xs text-[#FFB800] font-black flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            <span class="lang-id-only">Lihat Foto &rarr;</span>
+                            <span class="lang-en-only">View Photo &rarr;</span>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-black text-[#061838] group-hover:text-[#FFB800] transition-colors leading-tight">
+                        <span class="lang-id-only">1. Proses Recruitment</span>
+                        <span class="lang-en-only">1. Recruitment Process</span>
+                    </h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        <span class="lang-id-only">Seleksi administrasi ketat, verifikasi dokumen pelaut kapal ikan, wawancara kompetensi teknis penangkapan, dan medical check-up menyeluruh bagi calon ABK.</span>
+                        <span class="lang-en-only">Rigorous administrative screening, fishing vessel seafarer document verification, technical fishing competency interviews, and full medical check-ups for crew candidates.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2: Kegiatan di Kapal (Slideshow) -->
+            <div class="shipboard-card group rounded-3xl overflow-hidden bg-white border-2 border-slate-200/80 hover:border-[#FFB800] shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 fade-in-section delay-200" style="overflow: visible;">
+
+                <!-- Slideshow + Outer Buttons Wrapper -->
+                <div class="relative" id="shipboard-slideshow">
+
+                    <!-- Image clipping wrapper with slides inside -->
+                    <div class="h-64 overflow-hidden relative" style="border-radius: 1.5rem 1.5rem 0 0;">
+
+                        <!-- Slides wrapper -->
+                        <div class="flex h-full transition-transform duration-500 ease-in-out" id="shipboard-slides-inner" style="width:400%; transform:translateX(0%)">
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:25%"
+                                 data-img-src="images/shipboard-coldstore.jpg">
+                                <img src="images/shipboard-coldstore.jpg" alt="Shipboard Cold Store" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:25%"
+                                 data-img-src="images/shipboard-deck-catch.jpg">
+                                <img src="images/shipboard-deck-catch.jpg" alt="Shipboard Deck Catch" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:25%"
+                                 data-img-src="images/shipboard-processing.jpg">
+                                <img src="images/shipboard-processing.jpg" alt="Shipboard Fish Processing" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:25%"
+                                 data-img-src="images/shipboard-tuna.jpg">
+                                <img src="images/shipboard-tuna.jpg" alt="Shipboard Tuna Handling" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- Badge -->
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-[#061838] text-[#FFB800] border border-[#FFB800]/40 shadow-md pointer-events-none">
+                            <span class="lang-id-only">Kapal Ikan</span>
+                            <span class="lang-en-only">Fishing Ops</span>
+                        </span>
+
+                        <!-- Slide Counter -->
+                        <span class="shipboard-counter absolute top-4 right-4 z-10 px-2.5 py-1 rounded-lg text-xs font-bold bg-[#061838]/70 text-white pointer-events-none">1 / 4</span>
+
+                        <!-- Dots -->
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 pointer-events-none" id="shipboard-dots">
+                            <span class="shipboard-dot w-2 h-2 rounded-full bg-white" style="opacity:1"></span>
+                            <span class="shipboard-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                            <span class="shipboard-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                            <span class="shipboard-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Prev Button — di tepi kiri luar kartu -->
+                    <button class="shipboard-prev absolute -left-5 top-32 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#061838] hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-xl border-2 border-white" aria-label="Previous">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+
+                    <!-- Next Button — di tepi kanan luar kartu -->
+                    <button class="shipboard-next absolute -right-5 top-32 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#061838] hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-xl border-2 border-white" aria-label="Next">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+
+                </div>
+
+                <div class="p-7 bg-white space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">
+                            <span class="lang-id-only">Operasional Kapal Ikan</span>
+                            <span class="lang-en-only">Fishing Vessel Operations</span>
+                        </span>
+                        <span class="text-xs text-[#FFB800] font-black">
+                            <span class="lang-id-only">4 Foto</span>
+                            <span class="lang-en-only">4 Photos</span>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-black text-[#061838] group-hover:text-[#FFB800] transition-colors leading-tight">
+                        <span class="lang-id-only">2. Kegiatan di Kapal</span>
+                        <span class="lang-en-only">2. Shipboard Activities</span>
+                    </h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        <span class="lang-id-only">Operasional penangkapan ikan di fishing ground, penurunan &amp; penarikan alat tangkap (setting &amp; hauling), penyortiran hasil laut, pembekuan di cold storage, dan pemeliharaan alat tangkap.</span>
+                        <span class="lang-en-only">Fishing operations at sea fishing grounds, gear setting &amp; hauling, catch sorting, blast-freezing in cold storage holds, and maintenance of fishing equipment.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3: Proses Keberangkatan (Slideshow) -->
+            <div class="departure-card group rounded-3xl overflow-hidden bg-white border-2 border-slate-200/80 hover:border-[#FFB800] shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 fade-in-section delay-300" style="overflow: visible;">
+                
+                <!-- Slideshow + Outer Buttons Wrapper -->
+                <div class="relative" id="departure-slideshow">
+
+                    <!-- Image clipping wrapper with slides inside -->
+                    <div class="h-64 overflow-hidden relative" style="border-radius: 1.5rem 1.5rem 0 0;">
+
+                        <!-- Slides wrapper -->
+                        <div class="flex h-full transition-transform duration-500 ease-in-out" id="departure-slides-inner" style="width:500%; transform:translateX(0%)">
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:20%"
+                                 data-img-src="images/20260621_221340.jpg">
+                                <img src="images/20260621_221340.jpg" alt="Keberangkatan 1" class="w-full h-full object-cover object-top">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:20%"
+                                 data-img-src="images/20260602_121558.jpg">
+                                <img src="images/20260602_121558.jpg" alt="Keberangkatan 2" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:20%"
+                                 data-img-src="images/20260602_143046(0).jpg">
+                                <img src="images/20260602_143046(0).jpg" alt="Keberangkatan 3" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:20%"
+                                 data-img-src="images/20260727_173745.jpg">
+                                <img src="images/20260727_173745.jpg" alt="Keberangkatan 4" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="h-full relative gallery-item-trigger cursor-pointer" style="min-width:20%"
+                                 data-img-src="images/20260909_181328.jpg">
+                                <img src="images/20260909_181328.jpg" alt="Keberangkatan 5" class="w-full h-full object-cover object-top">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/70 via-transparent to-transparent"></div>
+                            </div>
+
+                        </div>
+
+                        <!-- Badge -->
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-md pointer-events-none">
+                            <span class="lang-id-only">Keberangkatan</span>
+                            <span class="lang-en-only">Deployment</span>
+                        </span>
+
+                        <!-- Slide Counter -->
+                        <span class="departure-counter absolute top-4 right-4 z-10 px-2.5 py-1 rounded-lg text-xs font-bold bg-[#061838]/70 text-white pointer-events-none">1 / 5</span>
+
+                        <!-- Dots -->
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 pointer-events-none" id="departure-dots">
+                            <span class="departure-dot w-2 h-2 rounded-full bg-white" style="opacity:1"></span>
+                            <span class="departure-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                            <span class="departure-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                            <span class="departure-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                            <span class="departure-dot w-2 h-2 rounded-full bg-white" style="opacity:0.4"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Prev Button — di tepi kiri luar kartu -->
+                    <button class="departure-prev absolute -left-5 top-32 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#061838] hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-xl border-2 border-white" aria-label="Previous">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+
+                    <!-- Next Button — di tepi kanan luar kartu -->
+                    <button class="departure-next absolute -right-5 top-32 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#061838] hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-xl border-2 border-white" aria-label="Next">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+
+                </div>
+                
+                <div class="p-7 bg-white space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700">
+                            <span class="lang-id-only">Mobilisasi &amp; Sign-On</span>
+                            <span class="lang-en-only">Mobilization &amp; Sign-On</span>
+                        </span>
+                        <span class="text-xs text-[#FFB800] font-black">
+                            <span class="lang-id-only">5 Foto</span>
+                            <span class="lang-en-only">5 Photos</span>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-black text-[#061838] group-hover:text-[#FFB800] transition-colors leading-tight">
+                        <span class="lang-id-only">3. Proses Keberangkatan</span>
+                        <span class="lang-en-only">3. Departure Process</span>
+                    </h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        <span class="lang-id-only">Pengurusan visa maritim &amp; paspor pelaut, tiket penerbangan, briefing PKLA kapal ikan, pengantaran bandara, hingga koordinasi sign-on di pelabuhan armada internasional.</span>
+                        <span class="lang-en-only">Processing maritime visas &amp; seaman books, international flight tickets, fishing crew PKLA briefings, airport escort, and port sign-on coordination with international fishing fleets.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    </main>
+
+    <!-- Global Footer (Corporate Dark Navy) -->
+    <footer class="bg-[#FFB800] text-[#061838] border-t-2 border-amber-500 shadow-2xl relative overflow-hidden" style="background-color: #FFB800 !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Column 1: Company Brand & Licenses (5 cols) -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-12 h-12 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center flex-shrink-0">
+                        <img src="images/logo-emblem.svg" alt="PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="text-base sm:text-lg font-black text-[#061838] tracking-tight">
+                            PT. BAHTERA <span class="text-red-700">ANUGERAH</span> SENTOSA
+                        </h4>
+                        <p class="text-xs text-[#061838] font-extrabold uppercase tracking-wide">
+                            <span class="lang-id-only">Agensi Pengawakan &amp; Penyaluran Pelaut Resmi</span>
+                            <span class="lang-en-only">Official Crewing &amp; Manning Agency</span>
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-xs text-[#061838]/90 leading-relaxed max-w-md font-semibold">
+                    <span class="lang-id-only">
+                        Mitra strategis dan tepercaya penyedia tenaga pelaut Indonesia yang kompeten, berdisiplin tinggi, dan bersertifikasi internasional (SIUKAK &amp; SIUPPAK) untuk armada kapal niaga dan perikanan global.
+                    </span>
+                    <span class="lang-en-only">
+                        Your trusted partner in providing highly qualified, reliable, and certified seafarers (SIUKAK &amp; SIUPPAK) to the international maritime industry.
+                    </span>
+                </p>
+
+                <!-- Licenses Badges in Clean White Cards -->
+                <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-md">
+                    <div class="p-3.5 rounded-xl bg-white border border-amber-600/30 shadow-sm flex items-center space-x-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 flex-shrink-0 animate-pulse"></span>
+                        <div class="text-xs">
+                            <span class="text-slate-600 block text-[10px] uppercase font-bold">
+                                <span class="lang-id-only">Lisensi Resmi SIUKAK</span>
+                                <span class="lang-en-only">SIUKAK Official License</span>
+                            </span>
+                            <span class="font-black text-[#061838] text-[11px]">No. 58.58-R / 2024</span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-amber-600/30 shadow-sm flex items-center space-x-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 flex-shrink-0 animate-pulse"></span>
+                        <div class="text-xs">
+                            <span class="text-slate-600 block text-[10px] uppercase font-bold">
+                                <span class="lang-id-only">Lisensi Resmi SIUPPAK</span>
+                                <span class="lang-en-only">SIUPPAK Official License</span>
+                            </span>
+                            <span class="font-black text-[#061838] text-[11px]">No. 65.21 / 2016</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (2 cols) -->
+            <div class="lg:col-span-2 space-y-3">
+                <h4 class="text-xs font-black uppercase tracking-wider text-[#061838] border-b-2 border-red-700 pb-2 mb-3">
+                    <span class="lang-id-only">Navigasi</span>
+                    <span class="lang-en-only">Quick Links</span>
+                </h4>
+                <ul class="space-y-2.5 text-xs font-bold text-[#061838]">
+                    <li><a href="index.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Beranda</span><span class="lang-en-only">Home</span></a></li>
+                    <li><a href="services.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Layanan Kami</span><span class="lang-en-only">Our Services</span></a></li>
+                    <li><a href="team.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Tim Kami</span><span class="lang-en-only">Our Team</span></a></li>
+                    <li><a href="gallery.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Galeri</span><span class="lang-en-only">Gallery</span></a></li>
+                    <li><a href="contact.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Hubungi Kami</span><span class="lang-en-only">Contact Us</span></a></li>
+                </ul>
+            </div>
+
+
+
+            <!-- Column 4: Contact & Office (3 cols) -->
+            <div class="lg:col-span-3 space-y-3">
+                <h4 class="text-xs font-black uppercase tracking-wider text-[#061838] border-b-2 border-red-700 pb-2 mb-3">
+                    <span class="lang-id-only">Kontak &amp; Lokasi</span>
+                    <span class="lang-en-only">Contact &amp; Office</span>
+                </h4>
+                <div class="space-y-3.5 text-xs text-[#061838]">
+                    <div class="flex items-start space-x-2.5">
+                        <svg class="w-4 h-4 text-red-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <p class="text-[11px] leading-relaxed font-bold">
+                            Jl. Telaga Citra / Perum Telaga Murni, Kec. Cikarang Barat, Kab. Bekasi, Jawa Barat 17530 - Indonesia
+                        </p>
+                    </div>
+
+                    <div class="flex items-center space-x-2.5">
+                        <svg class="w-4 h-4 text-[#061838] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <a href="tel:+622189106967" class="text-xs font-black hover:text-red-700 transition">(+62) 21 89106967</a>
+                    </div>
+
+                    <div class="flex items-start space-x-2.5">
+                        <svg class="w-4 h-4 text-[#061838] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <div class="flex flex-col space-y-1">
+                            <a href="mailto:pt_basn@outlook.co.id" class="text-xs font-black hover:text-red-700 transition">pt_basn@outlook.co.id</a>
+                            <a href="mailto:pt_basn@yahoo.co.id" class="text-xs font-black hover:text-red-700 transition">pt_basn@yahoo.co.id</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="mt-12 pt-6 border-t border-[#061838]/20 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#061838] font-bold">
+            <div>
+                <span>&copy; 2026 PT. BAHTERA ANUGERAH SENTOSA. All Rights Reserved.</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <span class="text-red-800 font-black">SIUKAK &bull; SIUPPAK Certified</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4 transition-all duration-300">
+        <div class="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <!-- Close -->
+            <button id="lightbox-close" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center transition shadow-lg focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <!-- Prev -->
+            <button id="lightbox-prev" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-lg focus:outline-none" aria-label="Previous photo">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <!-- Next -->
+            <button id="lightbox-next" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-lg focus:outline-none" aria-label="Next photo">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <!-- Counter -->
+            <span id="lightbox-counter" class="hidden absolute bottom-20 right-4 z-20 px-3 py-1 rounded-lg text-xs font-bold bg-black/60 text-white pointer-events-none"></span>
+            <!-- Image -->
+            <div class="max-h-[70vh] overflow-hidden flex items-center justify-center bg-slate-950">
+                <img id="lightbox-img" src="" alt="Gallery Preview" class="max-h-[70vh] w-auto object-contain transition-opacity duration-300">
+            </div>
+            <div class="p-6 bg-white border-t border-slate-100">
+                <h3 id="lightbox-title" class="text-lg font-bold text-slate-900 mb-1"></h3>
+                <p id="lightbox-desc" class="text-slate-600 text-sm font-medium"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Floating Quick Action Buttons (Bottom Right) -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
+        <!-- WhatsApp Chat Button -->
+        <a href="https://wa.me/6280000000000?text=Halo%20PT.%20Bahtera%20Anugerah%20Sentosa,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20crewing." target="_blank" class="w-13 h-13 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center p-3.5 transition duration-200 transform hover:scale-110 group relative" title="Hubungi Kami via WhatsApp">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold py-1.5 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Konsultasi WhatsApp</span>
+        </a>
+
+        <!-- Help / Contact Button -->
+        <a href="contact.html" class="w-13 h-13 bg-white hover:bg-slate-50 text-slate-800 rounded-full shadow-xl border border-slate-200 flex items-center justify-center p-3.5 transition duration-200 transform hover:scale-110 group relative" title="Pusat Informasi & Bantuan">
+            <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold py-1.5 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Bantuan &amp; Kontak</span>
+        </a>
+    </div>
+
+    <script>
+(function() {
+
+    // ─── Departure photos data ───────────────────────────────────────────────
+    var departurePhotos = [];
+
+    function buildDeparturePhotos() {
+        var slides = document.querySelectorAll('#departure-slides-inner .gallery-item-trigger');
+        departurePhotos = [];
+        slides.forEach(function(slide) {
+            departurePhotos.push({
+                src:   slide.getAttribute('data-img-src'),
+                title: slide.getAttribute('data-img-title') || '',
+                desc:  slide.getAttribute('data-img-desc') || ''
+            });
+        });
+    }
+
+    // ─── Lightbox helpers ────────────────────────────────────────────────────
+    var lbModal   = document.getElementById('gallery-lightbox');
+    var lbImg     = document.getElementById('lightbox-img');
+    var lbTitle   = document.getElementById('lightbox-title');
+    var lbDesc    = document.getElementById('lightbox-desc');
+    var lbClose   = document.getElementById('lightbox-close');
+    var lbPrev    = document.getElementById('lightbox-prev');
+    var lbNext    = document.getElementById('lightbox-next');
+    var lbCounter = document.getElementById('lightbox-counter');
+
+    var lbPhotos  = [];   // current photo set shown in lightbox
+    var lbIndex   = 0;    // current index in lbPhotos
+
+    function openLightbox(photos, index) {
+        lbPhotos = photos;
+        showLbPhoto(index);
+        if (lbModal) { lbModal.classList.remove('hidden'); lbModal.classList.add('flex'); }
+    }
+
+    function closeLightbox() {
+        if (lbModal) { lbModal.classList.add('hidden'); lbModal.classList.remove('flex'); }
+        lbPhotos = []; lbIndex = 0;
+    }
+
+    function showLbPhoto(idx) {
+        lbIndex = ((idx % lbPhotos.length) + lbPhotos.length) % lbPhotos.length;
+        var p = lbPhotos[lbIndex];
+        if (lbImg)   { lbImg.style.opacity = '0'; setTimeout(function() { lbImg.src = p.src; lbImg.style.opacity = '1'; }, 150); }
+        if (lbTitle) {
+            lbTitle.innerHTML = p.title;
+            if (lbTitle.parentElement) {
+                lbTitle.parentElement.style.display = (!p.title && !p.desc) ? 'none' : '';
+            }
+        }
+        if (lbDesc) lbDesc.innerHTML = p.desc;
+
+        // Show/hide nav buttons & counter
+        var multi = lbPhotos.length > 1;
+        if (lbPrev)    { lbPrev.classList.toggle('hidden', !multi); lbPrev.classList.toggle('flex', multi); }
+        if (lbNext)    { lbNext.classList.toggle('hidden', !multi); lbNext.classList.toggle('flex', multi); }
+        if (lbCounter) {
+            lbCounter.classList.toggle('hidden', !multi);
+            lbCounter.textContent = (lbIndex + 1) + ' / ' + lbPhotos.length;
+        }
+    }
+
+    if (lbClose) lbClose.addEventListener('click', closeLightbox);
+    if (lbPrev)  lbPrev.addEventListener('click',  function(e) { e.stopPropagation(); showLbPhoto(lbIndex - 1); });
+    if (lbNext)  lbNext.addEventListener('click',  function(e) { e.stopPropagation(); showLbPhoto(lbIndex + 1); });
+    if (lbModal) lbModal.addEventListener('click', function(e) { if (e.target === lbModal) closeLightbox(); });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lbModal || lbModal.classList.contains('hidden')) return;
+        if (e.key === 'ArrowLeft')  showLbPhoto(lbIndex - 1);
+        if (e.key === 'ArrowRight') showLbPhoto(lbIndex + 1);
+        if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // Touch swipe in lightbox
+    var lbTouchX = 0;
+    if (lbModal) {
+        lbModal.addEventListener('touchstart', function(e) { lbTouchX = e.touches[0].clientX; }, { passive: true });
+        lbModal.addEventListener('touchend', function(e) {
+            var diff = lbTouchX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) showLbPhoto(diff > 0 ? lbIndex + 1 : lbIndex - 1);
+        }, { passive: true });
+    }
+
+    // ─── Regular gallery items (non-slideshow) ───────────────────────────────
+    document.querySelectorAll('.gallery-item-trigger').forEach(function(item) {
+        // Exclude slideshow slides — handled separately below
+        if (item.closest('#departure-slideshow')) return;
+        if (item.closest('#shipboard-slideshow')) return;
+        item.addEventListener('click', function() {
+            openLightbox([{
+                src:   item.getAttribute('data-img-src'),
+                title: item.getAttribute('data-img-title') || '',
+                desc:  item.getAttribute('data-img-desc') || ''
+            }], 0);
+        });
+    });
+
+    // ─── Departure slideshow ─────────────────────────────────────────────────
+    function initDepartureSlideshow() {
+        var wrapper = document.getElementById('departure-slideshow');
+        if (!wrapper) return;
+
+        buildDeparturePhotos();
+
+        var inner   = document.getElementById('departure-slides-inner');
+        var dots    = wrapper.querySelectorAll('.departure-dot');
+        var counter = wrapper.querySelector('.departure-counter');
+        var prevBtn = wrapper.querySelector('.departure-prev');
+        var nextBtn = wrapper.querySelector('.departure-next');
+        var total   = departurePhotos.length || 5;
+        var current = 0;
+        var timer   = null;
+
+        function goTo(idx) {
+            current = ((idx % total) + total) % total;
+            var step = 100 / total;
+            inner.style.transform = 'translateX(-' + (current * step) + '%)';
+            dots.forEach(function(d, i) { d.style.opacity = i === current ? '1' : '0.4'; });
+            if (counter) counter.textContent = (current + 1) + ' / ' + total;
+        }
+
+        function start() { timer = setInterval(function() { goTo(current + 1); }, 3500); }
+        function stop()  { clearInterval(timer); }
+        function reset() { stop(); start(); }
+
+        if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); reset(); });
+        if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); reset(); });
+
+        wrapper.addEventListener('mouseenter', stop);
+        wrapper.addEventListener('mouseleave', start);
+
+        // Touch swipe on card
+        var tx = 0;
+        wrapper.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+        wrapper.addEventListener('touchend', function(e) {
+            var diff = tx - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); reset(); }
+        }, { passive: true });
+
+        // Click on a slide → open lightbox at that index, with full departure photos array
+        var slides = wrapper.querySelectorAll('.gallery-item-trigger');
+        slides.forEach(function(slide, idx) {
+            slide.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(departurePhotos, idx);
+            });
+        });
+
+        start();
+    }
+
+
+    // ─── Shipboard slideshow ──────────────────────────────────────────────────
+    function initShipboardSlideshow() {
+        var wrapper = document.getElementById('shipboard-slideshow');
+        if (!wrapper) return;
+
+        // Build photos array from slide data attributes
+        var shipboardPhotos = [];
+        wrapper.querySelectorAll('.gallery-item-trigger').forEach(function(slide) {
+            shipboardPhotos.push({
+                src:   slide.getAttribute('data-img-src'),
+                title: slide.getAttribute('data-img-title') || '',
+                desc:  slide.getAttribute('data-img-desc') || ''
+            });
+        });
+
+        var inner   = document.getElementById('shipboard-slides-inner');
+        var dots    = wrapper.querySelectorAll('.shipboard-dot');
+        var counter = wrapper.querySelector('.shipboard-counter');
+        var prevBtn = wrapper.querySelector('.shipboard-prev');
+        var nextBtn = wrapper.querySelector('.shipboard-next');
+        var total   = shipboardPhotos.length || 5;
+        var current = 0;
+        var timer   = null;
+
+        function goTo(idx) {
+            current = ((idx % total) + total) % total;
+            var step = 100 / total;
+            inner.style.transform = 'translateX(-' + (current * step) + '%)';
+            dots.forEach(function(d, i) { d.style.opacity = i === current ? '1' : '0.4'; });
+            if (counter) counter.textContent = (current + 1) + ' / ' + total;
+        }
+
+        function start() { timer = setInterval(function() { goTo(current + 1); }, 4000); }
+        function stop()  { clearInterval(timer); }
+        function reset() { stop(); start(); }
+
+        if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current - 1); reset(); });
+        if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(current + 1); reset(); });
+
+        wrapper.addEventListener('mouseenter', stop);
+        wrapper.addEventListener('mouseleave', start);
+
+        // Touch swipe
+        var tx = 0;
+        wrapper.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, { passive: true });
+        wrapper.addEventListener('touchend', function(e) {
+            var diff = tx - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); reset(); }
+        }, { passive: true });
+
+        // Click on slide → open lightbox
+        var slides = wrapper.querySelectorAll('.gallery-item-trigger');
+        slides.forEach(function(slide, idx) {
+            slide.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(shipboardPhotos, idx);
+            });
+        });
+
+        start();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            initDepartureSlideshow();
+            initShipboardSlideshow();
+        });
+    } else {
+        initDepartureSlideshow();
+        initShipboardSlideshow();
+    }
+
+})();
+</script>
+
+    <script>
+    // Standalone Static Bundle Runner (Works with file:// and on Vercel)
+    window.setLanguage = function(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        try { localStorage.setItem('pt_bks_lang', lang); } catch(e){}
+        document.querySelectorAll('[data-set-lang]').forEach(function(el) {
+            var btnLang = el.getAttribute('data-set-lang');
+            if (btnLang === lang) {
+                el.classList.add('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.remove('text-white');
+            } else {
+                el.classList.remove('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.add('text-white');
+            }
+        });
+    };
+
+    // PT. Bahtera Anugerah Sentosa - Interactive Scripts
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Language Toggle (ID / EN)
+    const initLanguage = () => {
+        const savedLang = localStorage.getItem('pt_bks_lang') || 'id';
+        setLanguage(savedLang);
+
+        const langBtns = document.querySelectorAll('[data-set-lang], .lang-toggle-btn, .lang-flag-btn');
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetLang = btn.getAttribute('data-set-lang');
+                if (targetLang) {
+                    setLanguage(targetLang);
+                }
+            });
+        });
+    };
+
+    const setLanguage = (lang) => {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('pt_bks_lang', lang);
+
+        document.querySelectorAll('[data-set-lang]').forEach(el => {
+            const btnLang = el.getAttribute('data-set-lang');
+            if (btnLang === lang) {
+                el.classList.add('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.remove('text-white');
+            } else {
+                el.classList.remove('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.add('text-white');
+            }
+        });
+    };
+
+    initLanguage();
+
+    // 2. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    }
+
+    // 3. Gallery Lightbox Modal
+    const modal = document.getElementById('gallery-lightbox');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalDesc = document.getElementById('lightbox-desc');
+    const modalClose = document.getElementById('lightbox-close');
+
+    if (modal) {
+        document.querySelectorAll('.gallery-item-trigger').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.getAttribute('data-img-src');
+                const title = item.getAttribute('data-img-title') || '';
+                const desc = item.getAttribute('data-img-desc') || '';
+
+                if (modalImg) modalImg.src = src;
+                if (modalTitle) modalTitle.textContent = title;
+                if (modalDesc) modalDesc.textContent = desc;
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });
+
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        });
+    }
+
+    // 4. PDF File Upload Handler (For Contact Form)
+    const fileInput = document.getElementById('pdf_file');
+    const fileDropZone = document.getElementById('pdf_drop_zone');
+    const filePreview = document.getElementById('pdf_file_preview');
+    const fileNameDisplay = document.getElementById('pdf_file_name');
+    const fileSizeDisplay = document.getElementById('pdf_file_size');
+    const fileRemoveBtn = document.getElementById('pdf_remove_btn');
+
+    if (fileInput && fileDropZone) {
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                fileDropZone.classList.add('border-amber-400', 'bg-amber-500/10');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                fileDropZone.classList.remove('border-amber-400', 'bg-amber-500/10');
+            }, false);
+        });
+
+        fileDropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files.length > 0) {
+                handleFile(fileInput.files[0]);
+            }
+        });
+
+        if (fileRemoveBtn) {
+            fileRemoveBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                if (filePreview) filePreview.classList.add('hidden');
+                if (fileDropZone) fileDropZone.classList.remove('hidden');
+            });
+        }
+
+        function handleFile(file) {
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Hanya file dokumen PDF yang diperbolehkan! / Only PDF files are allowed.');
+                fileInput.value = '';
+                return;
+            }
+
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Ukuran file maksimal 10MB! / Maximum file size is 10MB.');
+                fileInput.value = '';
+                return;
+            }
+
+            if (fileNameDisplay) fileNameDisplay.textContent = file.name;
+            if (fileSizeDisplay) fileSizeDisplay.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+            if (filePreview) filePreview.classList.remove('hidden');
+            if (fileDropZone) fileDropZone.classList.add('hidden');
+        }
+    }
+
+    // 5. Scroll Fade-in Animations (IntersectionObserver)
+    const fadeObserverOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.12
+    };
+
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, fadeObserverOptions);
+
+    const animatedElements = document.querySelectorAll('.fade-in-section, .fade-in-left, .fade-in-right, .fade-in-scale');
+    animatedElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        // If element is at top of page on initial load (Hero), reveal with smooth intro
+        if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+            setTimeout(() => {
+                el.classList.add('is-visible');
+            }, 120);
+        } else {
+            fadeObserver.observe(el);
+        }
+    });
+
+    // 6. Departure Process Slideshow
+    // NOTE: Controlled by inline script in gallery.blade.php to support lightbox integration.
+    // Do not add a duplicate controller here.
+});
+
+
+    // Immediate reveal safeguard for static previews
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fade-in-section, .fade-in-left, .fade-in-right, .fade-in-scale').forEach(function(el) {
+            el.classList.add('is-visible');
+        });
+        var savedLang = 'id';
+        try { savedLang = localStorage.getItem('pt_bks_lang') || 'id'; } catch(e){}
+        window.setLanguage(savedLang);
+    });
+    </script>
+
+</body>
+</html>

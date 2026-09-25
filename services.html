@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Our Services &amp; Vessel Types - PT. BAHTERA ANUGERAH SENTOSA</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="PT. BAHTERA ANUGERAH SENTOSA - Professional Crewing & Manning Services with SIUKAK No. 58.58-R/2024 & SIUPPAK No. 65.21/2016. Your trusted international maritime partner.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/logo-emblem.svg?v=2">
+    <link rel="shortcut icon" type="image/svg+xml" href="images/logo-emblem.svg?v=2">
+    <link rel="apple-touch-icon" href="images/logo-emblem.svg?v=2">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles & Scripts -->
+    <link rel="preload" as="style" href="build/assets/app-CBwF-SKm.css" /><link rel="stylesheet" href="build/assets/app-CBwF-SKm.css" />
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 100% Reliable Language Switching Rules */
+        html[data-lang="id"] .lang-en-only {
+            display: none !important;
+        }
+        html[data-lang="en"] .lang-id-only {
+            display: none !important;
+        }
+
+        /* Active Language Flag Pill Buttons */
+        .lang-flag-btn.lang-active {
+            background-color: #FFB800 !important;
+            color: #061838 !important;
+            font-weight: 900 !important;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.25) !important;
+        }
+        .lang-flag-btn:not(.lang-active) {
+            color: #FFFFFF !important;
+            background-color: transparent !important;
+            opacity: 0.85;
+        }
+        .lang-flag-btn:not(.lang-active):hover {
+            opacity: 1;
+            background-color: rgba(255,255,255,0.1) !important;
+        }
+    </style>
+
+    <script>
+        // Global Instant Language Switcher
+        window.setLanguage = function(lang) {
+            if (lang !== 'id' && lang !== 'en') lang = 'id';
+            
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang);
+            
+            try {
+                localStorage.setItem('pt_bas_lang', lang);
+            } catch (e) {}
+
+            document.querySelectorAll('[data-set-lang]').forEach(function(el) {
+                var btnLang = el.getAttribute('data-set-lang');
+                if (btnLang === lang) {
+                    el.classList.add('lang-active');
+                } else {
+                    el.classList.remove('lang-active');
+                }
+            });
+        };
+
+        // Initialize immediately
+        (function() {
+            var initialLang = 'id';
+            try {
+                initialLang = localStorage.getItem('pt_bas_lang') || 'id';
+            } catch (e) {}
+            document.documentElement.setAttribute('data-lang', initialLang);
+            document.documentElement.setAttribute('lang', initialLang);
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var currentLang = document.documentElement.getAttribute('data-lang') || 'id';
+            window.setLanguage(currentLang);
+        });
+    </script>
+<script id="browser-logger-active">
+(function() {
+    const ENDPOINT = 'http://127.0.0.1:8000/_boost/browser-logs';
+    const logQueue = [];
+    let flushTimeout = null;
+    const captureTypes = ["error","warning","info","log","debug","table"];
+
+    console.log('🔍 Browser logger active (MCP server detected). Posting to: ' + ENDPOINT);
+
+    // Store original console methods
+    const originalConsole = {
+        log: console.log,
+        debug: console.debug,
+        info: console.info,
+        error: console.error,
+        warn: console.warn,
+        table: console.table
+    };
+
+    // Walk own enumerable keys so JSON.stringify cannot auto-invoke a proxy fake toJSON (e.g. Livewire's `$wire`) and fire a real request.
+    function toSafeValue(value, seen) {
+        if (value === null || typeof value !== 'object') {
+            return value;
+        }
+        if (value instanceof Error) {
+            return { name: value.name, message: value.message, stack: value.stack };
+        }
+        // Date has no own enumerable keys, so the walk below would collapse it to {}.
+        if (value instanceof Date) {
+            return value.toISOString();
+        }
+        if (seen.has(value)) {
+            return '[Circular]';
+        }
+        seen.add(value);
+        if (Array.isArray(value)) {
+            return value.map((item) => toSafeValue(item, seen));
+        }
+        const plain = {};
+        for (const key of Object.keys(value)) {
+            if (key === 'toJSON') continue;
+            try {
+                plain[key] = toSafeValue(value[key], seen);
+            } catch (e) {
+                plain[key] = '[Unreadable]';
+            }
+        }
+        return plain;
+    }
+
+    // Helper to safely stringify values
+    function safeStringify(obj) {
+        return JSON.stringify(toSafeValue(obj, new WeakSet()));
+    }
+
+    // Normalize log type for consistency (e.g., 'warn' to 'warning')
+    function normalizeType(type) {
+        return type === 'warn' ? 'warning' : type;
+    }
+
+    // Determine if a log type should be captured based on configured levels
+    function shouldCapture(type) {
+        return captureTypes.includes(normalizeType(type));
+    }
+
+    // Batch and send logs
+    function flushLogs() {
+        if (logQueue.length === 0) return;
+
+        const batch = logQueue.splice(0, logQueue.length);
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({ logs: batch })
+        }).catch(err => {
+            // Silently fail to avoid infinite loops
+            originalConsole.error('Failed to send logs:', err);
+        });
+    }
+
+    // Debounced flush (100ms)
+    function scheduleFlush() {
+        if (flushTimeout) clearTimeout(flushTimeout);
+        flushTimeout = setTimeout(flushLogs, 100);
+    }
+
+    // Intercept console methods
+    ['log', 'debug', 'info', 'error', 'warn', 'table'].forEach(method => {
+        console[method] = function(...args) {
+            // Call original method
+            originalConsole[method].apply(console, args);
+
+            // Capture log data
+            try {
+                if (!shouldCapture(method)) {
+                    return;
+                }
+
+                logQueue.push({
+                    type: method,
+                    timestamp: new Date().toISOString(),
+                    data: args.map(arg => {
+                        try {
+                            return typeof arg === 'object' ? JSON.parse(safeStringify(arg)) : arg;
+                        } catch (e) {
+                            return String(arg);
+                        }
+                    }),
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            } catch (e) {
+                // Fail silently
+            }
+        };
+    });
+
+    // Global error handlers for uncaught errors
+    const originalOnError = window.onerror;
+    window.onerror = function boostErrorHandler(errorMsg, url, lineNumber, colNumber, error) {
+        try {
+            if (shouldCapture('error')) {
+                logQueue.push({
+                    type: 'uncaught_error',
+                    timestamp: new Date().toISOString(),
+                    data: [{
+                        message: errorMsg,
+                        filename: url,
+                        lineno: lineNumber,
+                        colno: colNumber,
+                        error: error ? {
+                            name: error.name,
+                            message: error.message,
+                            stack: error.stack
+                        } : null
+                    }],
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            }
+
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Call original handler if it exists
+        if (originalOnError && typeof originalOnError === 'function') {
+            return originalOnError(errorMsg, url, lineNumber, colNumber, error);
+        }
+
+        // Let the error continue to propagate
+        return false;
+    }
+    window.addEventListener('error', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'window_error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    error: event.error ? {
+                        name: event.error.name,
+                        message: event.error.message,
+                        stack: event.error.stack
+                    } : null
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the error continue to propagate
+        return false;
+    });
+    window.addEventListener('unhandledrejection', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: 'Unhandled Promise Rejection',
+                    reason: toSafeValue(event.reason, new WeakSet())
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the rejection continue to propagate
+        return false;
+    });
+
+    // Flush on page unload
+    window.addEventListener('beforeunload', () => {
+        if (logQueue.length > 0) {
+            navigator.sendBeacon(ENDPOINT, JSON.stringify({ logs: logQueue }));
+        }
+    });
+})();
+</script>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
+
+    <!-- Main Navigation Header (Clean Corporate Navbar with Slim Topbar) -->
+    <!-- FIXED / STICKY HEADER (Topbar + Main Navigation stay pinned when scrolling) -->
+<header class="sticky top-0 z-50 w-full shadow-lg">
+
+    <!-- 1. SLIM CORPORATE TOPBAR (Dark Navy with Gold Accents) -->
+    <div class="bg-[#061838] text-slate-200 text-xs border-b border-white/10 relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+            
+            <!-- Left: Contact Info -->
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] sm:text-xs">
+                <a href="tel:+622189106967" class="inline-flex items-center text-slate-300 font-medium hover:text-[#FFB800] transition">
+                    <svg class="w-3.5 h-3.5 mr-1.5 text-[#FFB800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    (+62) 21 89106967
+                </a>
+                <span class="text-white/20 hidden sm:inline">|</span>
+                <div class="hidden sm:inline-flex items-center gap-1.5 text-slate-300 font-medium">
+                    <svg class="w-3.5 h-3.5 mr-1 text-[#FFB800]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <a href="mailto:pt_basn@outlook.co.id" class="hover:text-[#FFB800] transition">pt_basn@outlook.co.id</a>
+                    <span class="text-white/25">/</span>
+                    <a href="mailto:pt_basn@yahoo.co.id" class="hover:text-[#FFB800] transition">pt_basn@yahoo.co.id</a>
+                </div>
+            </div>
+
+            <!-- Right: Operational Hours & Language Switcher -->
+            <div class="flex items-center space-x-4 text-[11px] sm:text-xs ml-auto">
+                <span class="hidden sm:inline text-slate-300 font-medium">
+                    <span class="text-[#FFB800] font-bold">&bull;</span>
+                    <span class="lang-id-only">Senin &ndash; Jumat: 08:00 &ndash; 16:00 WIB</span>
+                    <span class="lang-en-only">Mon &ndash; Fri: 08:00 &ndash; 16:00 WIB (UTC+7)</span>
+                </span>
+                
+                <!-- Language Switcher Flags Pill (ID / EN) -->
+                <div class="flex items-center bg-black/30 backdrop-blur-md p-1 rounded-full border border-white/20 gap-1 shadow-inner">
+                    <!-- ID Button with Indonesia Flag SVG -->
+                    <button type="button" data-set-lang="id" onclick="window.setLanguage('id')" class="lang-flag-btn flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition cursor-pointer" title="Bahasa Indonesia">
+                        <svg class="w-4 h-2.5 rounded-[2px] overflow-hidden shadow-xs border border-white/40 flex-shrink-0" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="640" height="240" fill="#E70011"/>
+                            <rect y="240" width="640" height="240" fill="#FFFFFF"/>
+                        </svg>
+                        <span>ID</span>
+                    </button>
+                    <span class="text-white/30 text-[10px]">|</span>
+                    <!-- EN Button with UK Flag SVG -->
+                    <button type="button" data-set-lang="en" onclick="window.setLanguage('en')" class="lang-flag-btn flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition cursor-pointer" title="English">
+                        <svg class="w-4 h-2.5 rounded-[2px] overflow-hidden shadow-xs border border-white/40 flex-shrink-0" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="60" height="30" fill="#012169"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                        </svg>
+                        <span>EN</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. MAIN SOLID YELLOW NAVBAR -->
+    <div class="bg-[#FFB800] border-b-2 border-amber-500 shadow-md transition-all duration-300" style="background-color: #FFB800 !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            
+            <!-- Company Logo & Brand -->
+            <a href="index.html" class="flex items-center space-x-3.5 group py-2 focus:outline-none">
+                <div class="w-12 h-12 flex-shrink-0 transition transform group-hover:scale-105 duration-200 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center">
+                    <img src="images/logo-emblem.svg" alt="Logo PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="text-[10px] font-black tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white leading-none shadow-sm">PT</span>
+                        <span class="text-base sm:text-lg font-black tracking-tight text-[#061838]">
+                            BAHTERA <span class="text-red-700">ANUGERAH</span> SENTOSA
+                        </span>
+                    </div>
+                    <span class="text-[10px] sm:text-[11px] font-extrabold text-[#061838]/90 tracking-wide">
+                        <span class="lang-id-only">Agensi Pengawakan &amp; Penyaluran Pelaut Resmi</span>
+                        <span class="lang-en-only">Official Maritime Crewing &amp; Manning Agency</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links (Clean Underline Only — Strictly NO Box Backgrounds or Focus Rings) -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+                <!-- Home Link -->
+                <a href="index.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Beranda</span>
+                    <span class="lang-en-only">Home</span>
+                </a>
+
+                <!-- Our Service Link -->
+                <a href="services.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-red-700 border-red-700 font-black">
+                    <span class="lang-id-only">Layanan Kami</span>
+                    <span class="lang-en-only">Our Services</span>
+                </a>
+
+                <!-- Our Team Link -->
+                <a href="team.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Tim Kami</span>
+                    <span class="lang-en-only">Our Team</span>
+                </a>
+
+                <!-- Gallery Link -->
+                <a href="gallery.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Galeri</span>
+                    <span class="lang-en-only">Gallery</span>
+                </a>
+
+                <!-- Contact Us Link -->
+                <a href="contact.html" class="py-2 text-sm transition-all duration-200 border-b-[3px] focus:outline-none focus:ring-0 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700 font-extrabold">
+                    <span class="lang-id-only">Hubungi Kami</span>
+                    <span class="lang-en-only">Contact Us</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="flex items-center space-x-3 lg:hidden">
+                <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl text-[#061838] bg-black/10 hover:bg-black/20 focus:outline-none" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b-2 border-amber-500 bg-[#FFB800] px-4 pt-3 pb-6 space-y-2 shadow-xl">
+        <a href="index.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Beranda</span>
+            <span class="lang-en-only">Home</span>
+        </a>
+        <a href="services.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-red-700 border-red-700 font-black">
+            <span class="lang-id-only">Layanan Kami</span>
+            <span class="lang-en-only">Our Services</span>
+        </a>
+        <a href="team.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Tim Kami</span>
+            <span class="lang-en-only">Our Team</span>
+        </a>
+        <a href="gallery.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Galeri</span>
+            <span class="lang-en-only">Gallery</span>
+        </a>
+        <a href="contact.html" class="block px-3 py-2.5 text-sm font-bold border-b-2 text-[#061838] border-transparent hover:text-red-700 hover:border-red-700">
+            <span class="lang-id-only">Hubungi Kami</span>
+            <span class="lang-en-only">Contact Us</span>
+        </a>
+    </div>
+    </div>
+</header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+<!-- Top Subpage Header with PT. BKS Logo -->
+<section class="relative min-h-[42vh] sm:min-h-[48vh] lg:min-h-[52vh] flex items-center py-20 sm:py-28 lg:py-36 text-white overflow-hidden border-b-2 border-[#FFB800]/30 shadow-2xl">
+    <!-- Real Ship Photo Background with Home Hero Blue Transparency Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="images/hero-banner.jpg" alt="Armada Kapal PT. Bahtera Anugerah Sentosa" class="w-full h-full object-cover object-center scale-105 filter saturate-110">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#061838]/65 via-[#061838]/55 to-[#061838]/75"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            <!-- Left Header Content -->
+            <div class="space-y-4 text-center md:text-left fade-in-left">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight drop-shadow-md">
+                    <span class="lang-id-only">Layanan &amp; <br><span class='text-[#FFB800]'>Jenis Kapal</span></span>
+                    <span class="lang-en-only">Our Services &amp; <br><span class='text-[#FFB800]'>Vessel Types</span></span>
+                </h1>
+
+                <p class="text-sm sm:text-base md:text-lg text-slate-100 max-w-2xl font-medium leading-relaxed drop-shadow-sm">
+                    <span class="lang-id-only">Solusi Manajemen Awak Kapal Terpadu &amp; Berstandar Internasional</span>
+                    <span class="lang-en-only">Integrated Maritime Crewing Solutions &amp; International Standards</span>
+                </p>
+            </div>
+
+            <!-- Right: Corporate Emblem Badge -->
+            <div class="flex-shrink-0 flex items-center space-x-4 bg-[#061838]/85 backdrop-blur-md px-6 py-5 rounded-2xl shadow-2xl border-2 border-[#FFB800]/50 fade-in-right">
+                <div class="w-14 h-14 flex-shrink-0 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center">
+                    <img src="images/logo-emblem.svg" alt="Emblem PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="text-xs sm:text-sm font-black text-white tracking-wide">PT. BAHTERA ANUGERAH SENTOSA</span>
+                    <span class="text-[10px] sm:text-xs text-[#FFB800] font-extrabold uppercase tracking-wider">Official Crewing Agency</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- 1. OUR SERVICES SECTION (Light Slate Theme) -->
+<section id="services-list" class="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-4 fade-in-section">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#061838] tracking-tight uppercase">
+                <span class="lang-id-only">Layanan Keagenan Awak Kapal</span>
+                <span class="lang-en-only">Our Crewing Services</span>
+            </h2>
+            <div class="text-slate-600 text-xs sm:text-sm leading-relaxed space-y-3 max-w-2xl mx-auto">
+                <p>
+                    <span class="lang-id-only">Kami berspesialisasi dalam perekrutan, seleksi, penempatan, dan penyaluran pelaut yang berkualifikasi untuk berbagai jenis kapal dan operasional maritim.</span>
+                    <span class="lang-en-only">We specialize in the recruitment, selection, placement, and deployment of qualified seafarers for various types of vessels and maritime operations.</span>
+                </p>
+                <p>
+                    <span class="lang-id-only">Setiap kandidat dinilai dan diseleksi secara cermat berdasarkan kualifikasi, pengalaman, kompetensi teknis, disiplin, tanggung jawab, dan sikap profesional. Kami meyakini bahwa awak kapal yang tepat sangat penting untuk memastikan operasional setiap kapal berjalan aman, efisien, dan sukses.</span>
+                    <span class="lang-en-only">Every candidate is carefully assessed and selected based on their qualifications, experience, technical competence, discipline, responsibility, and professional attitude. We believe that the right crew is essential to ensuring the safe, efficient, and successful operation of every vessel.</span>
+                </p>
+                <p class="font-bold text-[#061838] pt-1">
+                    <span class="lang-id-only">Layanan keagenan awak kapal kami meliputi:</span>
+                    <span class="lang-en-only">Our crewing services include:</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 7 Core Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- Service 1: Seafarer Recruitment & Selection -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-100">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/crew-training.jpg" alt="Recruitment" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-sm">
+                            <span class="lang-id-only">Rekrutmen &bull; Seleksi</span>
+                            <span class="lang-en-only">Recruitment &bull; Selection</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Rekrutmen &amp; Seleksi Pelaut</span>
+                            <span class="lang-en-only">Seafarer Recruitment &amp; Selection</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Proses rekrutmen dan seleksi ketat berbasis kompetensi teknis maritim, verifikasi dokumen, serta uji fisik dan mental pelaut komprehensif.</span>
+                            <span class="lang-en-only">Rigorous competency-based screening, maritime document verification, and comprehensive physical and psychological fitness tests.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Penyaringan Standar</span>
+                        <span class="lang-en-only">Standardized Screening</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">SIUKAK Compliant</span>
+                </div>
+            </div>
+
+            <!-- Service 2: Crew Placement & Deployment -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-150">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/hero-banner.jpg" alt="Placement" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#061838] text-[#FFB800] border border-[#FFB800]/40 shadow-sm">
+                            <span class="lang-id-only">Pemberangkatan &bull; Penempatan</span>
+                            <span class="lang-en-only">Embarkation &bull; Placement</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Penempatan &amp; Pemberangkatan Kru</span>
+                            <span class="lang-en-only">Crew Placement &amp; Deployment</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Penempatan dan pemberangkatan kru pelaut ke kapal-kapal internasional secara tepat waktu sesuai jadwal operasional pemilik kapal.</span>
+                            <span class="lang-en-only">Timely seafarer deployment and embarkation to global merchant and fishing fleets tailored to shipowners' schedules.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Tepat Waktu</span>
+                        <span class="lang-en-only">On-Time Departure</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">Fit-to-Position</span>
+                </div>
+            </div>
+
+            <!-- Service 3: Crew Documentation & Certification -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-200">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/subpage-banner.jpg" alt="Documentation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-sm">
+                            <span class="lang-id-only">Visa &bull; Endorsement</span>
+                            <span class="lang-en-only">Visa &bull; Endorsement</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Dokumentasi &amp; Sertifikasi Kru</span>
+                            <span class="lang-en-only">Crew Documentation &amp; Certification</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Pengurusan lengkap Paspor Pelaut, Seaman Book, sertifikat SIUKAK &amp; SIUPPAK, visa maritim, endorsement negara bendera, dan MCU.</span>
+                            <span class="lang-en-only">Full management of Seaman Book, SIUKAK &amp; SIUPPAK certificates, maritime transit visas, flag state endorsements, and certified MCU.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Endorsement Bendera</span>
+                        <span class="lang-en-only">Flag Endorsement</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">Medical Clearance</span>
+                </div>
+            </div>
+
+            <!-- Service 4: Crew Coordination & Travel Arrangement -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-100">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/ship-bridge.jpg" alt="Logistics" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#061838] text-[#FFB800] border border-[#FFB800]/40 shadow-sm">
+                            <span class="lang-id-only">Perjalanan &bull; Transit</span>
+                            <span class="lang-en-only">Travel &bull; Transit</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Koordinasi &amp; Pengaturan Perjalanan</span>
+                            <span class="lang-en-only">Crew Coordination &amp; Travel Arrangement</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Koordinasi perjalanan mulai dari tiket penerbangan, penjemputan bandara, akomodasi transit, hingga pendampingan sign-on di pelabuhan.</span>
+                            <span class="lang-en-only">Seamless travel arrangement from flight ticketing, airport pickups, transit accommodation, to port sign-on liaison.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Logistik Penerbangan</span>
+                        <span class="lang-en-only">Flight Logistics</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">Port Liaison</span>
+                </div>
+            </div>
+
+            <!-- Service 5: Crew Replacement & Rotation -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-150">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/vessel-fishing-trawler.jpg" alt="Rotation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-sm">
+                            <span class="lang-id-only">Rotasi &bull; Pergantian</span>
+                            <span class="lang-en-only">Rotation &bull; Relief</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Penggantian &amp; Rotasi Kru</span>
+                            <span class="lang-en-only">Crew Replacement &amp; Rotation</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Perencanaan jadwal rotasi dan penggantian kru secara teratur demi kestabilan dan produktivitas operasi kapal tanpa jeda waktu kosong.</span>
+                            <span class="lang-en-only">Systematic crew rotation planning and standby pool management ensuring zero vessel downtime and uninterrupted voyage operations.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Pergantian Terencana</span>
+                        <span class="lang-en-only">Planned Relief</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">Standby Ready</span>
+                </div>
+            </div>
+
+            <!-- Service 6: Crew Management Support -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-200">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/vessel-factory-trawler.jpg" alt="Management" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#061838] text-[#FFB800] border border-[#FFB800]/40 shadow-sm">
+                            <span class="lang-id-only">Manajemen &bull; Kru</span>
+                            <span class="lang-en-only">Crew &bull; Management</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Dukungan Manajemen Kru</span>
+                            <span class="lang-en-only">Crew Management Support</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Pengelolaan gaji tepat waktu, alokasi remitansi keluarga, asuransi jiwa &amp; kesehatan, serta pemantauan kesejahteraan dan kinerja pelaut.</span>
+                            <span class="lang-en-only">Punctual salary processing, family remittance management, life &amp; medical insurance, and seafarer welfare and performance monitoring.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Remitansi Tepat Waktu</span>
+                        <span class="lang-en-only">Timely Remittance</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">MLC Compliant</span>
+                </div>
+            </div>
+
+            <!-- Service 7: Compliance with International Maritime Standards -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 border border-slate-200/90 hover:border-[#FFB800] flex flex-col justify-between group fade-in-section delay-250 md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none w-full">
+                <div>
+                    <div class="h-44 sm:h-48 overflow-hidden relative">
+                        <img src="images/vessel-reefer.jpg" alt="Compliance" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#061838]/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-[#FFB800] text-[#061838] shadow-sm">
+                            <span class="lang-id-only">Kepatuhan &bull; Standar</span>
+                            <span class="lang-en-only">Compliance &bull; Standards</span>
+                        </span>
+                    </div>
+                    <div class="p-6 space-y-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#061838] group-hover:text-[#0b3b82] transition-colors leading-snug">
+                            <span class="lang-id-only">Kepatuhan Standar Maritim Internasional</span>
+                            <span class="lang-en-only">Compliance with International Maritime Standards</span>
+                        </h3>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            <span class="lang-id-only">Memastikan seluruh operasi penempatan pelaut memenuhi standar SIUKAK &amp; SIUPPAK secara penuh dan konsisten.</span>
+                            <span class="lang-en-only">Ensuring all seafarer deployment operations fully and consistently comply with SIUKAK &amp; SIUPPAK international standards.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 py-3 border-t border-slate-100 text-[11px] text-slate-500 font-bold flex items-center justify-between bg-slate-50/70">
+                    <span>
+                        <span class="lang-id-only">Standar Kepatuhan</span>
+                        <span class="lang-en-only">Compliance Standard</span>
+                    </span>
+                    <span class="text-[#061838] font-black bg-[#FFB800]/25 px-2 py-0.5 rounded text-[10px]">SIUKAK &amp; SIUPPAK</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- 2. VESSEL TYPES SECTION (Deep Ocean Navy Theme) -->
+<section id="vessel-types" class="py-20 lg:py-28 bg-[#041126] text-white relative overflow-hidden border-t border-white/10">
+    <!-- Radial Ocean Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,#0e3268_0%,#041126_100%)] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none opacity-40"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 fade-in-section">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight uppercase">
+                <span class="lang-id-only">Jenis Kapal</span>
+                <span class="lang-en-only">Vessel Types</span>
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-id-only">Selama bertahun-tahun, kami telah sukses menyalurkan awak kapal yang berkualifikasi untuk berbagai macam armada kapal komersial dan penangkap ikan, meliputi:</span>
+                <span class="lang-en-only">Over the years, we have successfully supplied qualified crew for a wide range of commercial and fishing vessels, including:</span>
+            </p>
+        </div>
+
+        <!-- 7 Vessel Cards in Dark Luxury Style -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            
+            <!-- Vessel 1: Factory Trawlers -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-100">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-factory-trawler.jpg" alt="Factory Trawlers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">01</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Factory Vessel
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Factory Trawlers</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 2: Fishing Trawlers -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-150">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-fishing-trawler.jpg" alt="Fishing Trawlers" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">02</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Stern Trawler
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Fishing Trawlers</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 3: Longliners -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-200">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-longliner.jpg" alt="Longliners" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">03</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Tuna Longline
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Longliners</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 4: Purse Seiners -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-100">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-purse-seiner.jpg" alt="Purse Seiners" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">04</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Purse Seine
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Purse Seiners</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 5: Squid Fishing Vessels -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-150">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-squid-jigger.jpg" alt="Squid Fishing Vessels" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">05</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Squid Jigging
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Squid Fishing Vessels</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 6: Cargo Reefer Vessels -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-200">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/vessel-reefer.jpg" alt="Cargo Reefer Vessels" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">06</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Reefer Fleet
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Cargo Reefer Vessels</h3>
+                </div>
+            </div>
+
+            <!-- Vessel 7: Other Commercial & Fishing Vessels -->
+            <div class="rounded-3xl bg-[#061838]/80 backdrop-blur-md border border-white/10 hover:border-[#FFB800] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 overflow-hidden group fade-in-section delay-250 md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none w-full">
+                <div class="h-48 sm:h-52 overflow-hidden relative">
+                    <img src="images/hero-banner.jpg" alt="Other Commercial & Fishing Vessels" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#061838] via-transparent to-transparent"></div>
+                    <div class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-[#041126]/90 text-[#FFB800] font-black text-xs border border-[#FFB800]/40">07</div>
+                    <span class="absolute bottom-3 left-3 text-[10px] font-black text-slate-900 uppercase tracking-wider bg-[#FFB800] px-2.5 py-0.5 rounded-md shadow-sm">
+                        Commercial Fleet
+                    </span>
+                </div>
+                <div class="p-5 sm:p-6">
+                    <h3 class="text-base sm:text-lg font-black text-white group-hover:text-[#FFB800] transition-colors">Other Commercial &amp; Fishing Vessels</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Closing Note Below Vessel Cards -->
+        <div class="text-center max-w-3xl mx-auto p-6 sm:p-7 rounded-3xl bg-[#061838]/80 border border-white/10 backdrop-blur-md shadow-xl fade-in-section">
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
+                <span class="lang-id-only">Pengalaman kami yang luas di berbagai jenis kapal memungkinkan kami memahami persyaratan operasional spesifik dari setiap armada dan menyediakan kru yang paling sesuai dengan kebutuhan kapal.</span>
+                <span class="lang-en-only">Our extensive experience across different vessel types allows us to understand the specific operational requirements of each fleet and provide crew who are well-suited to the vessel's needs.</span>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 3. INTERNATIONAL EXPERIENCE SECTION (Clean Light Theme) -->
+<section id="international-experience" class="py-20 lg:py-28 bg-[#FFFFFF] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3 fade-in-section">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#061838] tracking-tight uppercase">
+                <span class="lang-id-only">Pengalaman Internasional</span>
+                <span class="lang-en-only">International Experience</span>
+            </h2>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+                <span class="lang-id-only">Pelaut kami telah bertugas di atas kapal-kapal yang beroperasi di bawah berbagai bendera internasional dan di berbagai wilayah maritim, meliputi:</span>
+                <span class="lang-en-only">Our seafarers have served onboard vessels operating under various international flags and in different maritime regions, including:</span>
+            </p>
+        </div>
+
+        <!-- 8 Flag Countries Grid (Centered 4x2 Layout) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto fade-in-section">
+            
+            <!-- Country 1: Belize -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/bz.png" alt="Belize Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Belize</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">International Fleet</p>
+                </div>
+            </div>
+
+            <!-- Country 2: Russia -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/ru.png" alt="Russia Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Russia</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">Pacific &amp; Far East</p>
+                </div>
+            </div>
+
+            <!-- Country 3: Norway -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/no.png" alt="Norway Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Norway</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">North Sea Fleet</p>
+                </div>
+            </div>
+
+            <!-- Country 4: Oman -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/om.png" alt="Oman Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Oman</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">Middle East Waters</p>
+                </div>
+            </div>
+
+            <!-- Country 5: Spain -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/es.png" alt="Spain Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Spain</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">European Waters</p>
+                </div>
+            </div>
+
+            <!-- Country 6: Taiwan -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/tw.png" alt="Taiwan Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">Taiwan</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">Pacific Tuna Fleet</p>
+                </div>
+            </div>
+
+            <!-- Country 7: South Korea -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 group-hover:scale-105 transition flex-shrink-0">
+                    <img src="https://flagcdn.com/w160/kr.png" alt="South Korea Flag" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838]">South Korea</h4>
+                    <p class="text-[10px] text-slate-500 font-medium">Oceanic Fisheries</p>
+                </div>
+            </div>
+
+            <!-- Country 8: And many other countries -->
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FFB800] shadow-sm hover:shadow-lg text-center flex flex-col items-center justify-center space-y-3 transition duration-200 group transform hover:-translate-y-1">
+                <div class="w-14 h-9.5 rounded-lg overflow-hidden shadow-sm border border-slate-200 bg-[#061838] flex items-center justify-center text-[#FFB800] group-hover:scale-105 transition flex-shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="space-y-0.5">
+                    <h4 class="text-xs font-black text-[#061838] leading-tight">
+                        <span class="lang-id-only">Negara Lainnya</span>
+                        <span class="lang-en-only">And many other countries</span>
+                    </h4>
+                    <p class="text-[10px] text-slate-500 font-medium">
+                        <span class="lang-id-only">Rute Global</span>
+                        <span class="lang-en-only">Global Maritime Routes</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Closing Note Below Countries Grid -->
+        <div class="text-center max-w-3xl mx-auto p-6 sm:p-7 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm fade-in-section">
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                <span class="lang-id-only">Pengalaman internasional kami telah memperkuat pemahaman kami terhadap berbagai praktik maritim, persyaratan operasional, dan ekspektasi klien.</span>
+                <span class="lang-en-only">Our international experience has strengthened our understanding of different maritime practices, operational requirements, and client expectations.</span>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 4. BUILDING PARTNERSHIPS. PROVIDING PROFESSIONAL CREW. (Clean Light Theme) -->
+<section id="building-partnerships" class="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200/70">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center space-y-6 fade-in-section">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#061838] tracking-tight uppercase leading-tight">
+                BUILDING PARTNERSHIPS.<br>
+                <span class="text-[#061838]">PROVIDING PROFESSIONAL CREW.</span>
+            </h2>
+            
+            <div class="text-slate-600 text-xs sm:text-sm leading-relaxed space-y-4 max-w-3xl mx-auto">
+                <p>
+                    <span class="lang-id-only">Kami merasa terhormat dapat menjadi mitra keagenan awak kapal terpercaya Anda dan mendukung armada kapal Anda dengan para profesional maritim yang berkualifikasi dan dapat diandalkan.</span>
+                    <span class="lang-en-only">We would be honored to become your trusted crewing partner and support your fleet with qualified and dependable maritime professionals.</span>
+                </p>
+                <p>
+                    <span class="lang-id-only">Baik Anda membutuhkan kru untuk kapal penangkap ikan, factory trawlers, longliners, purse seiners, kapal cargo reefer, maupun kapal komersial lainnya, PT. BAHTERA ANUGERAH SENTOSA siap menyediakan solusi penyaluran kru yang andal dan disesuaikan dengan kebutuhan Anda.</span>
+                    <span class="lang-en-only">Whether you require crew for fishing vessels, factory trawlers, longliners, purse seiners, cargo reefer vessels, or other commercial vessels, PT. BAHTERA ANUGERAH SENTOSA is ready to provide reliable crewing solutions tailored to your requirements.</span>
+                </p>
+                <p class="font-semibold text-[#061838]">
+                    <span class="lang-id-only">Kami menantikan terjalinnya kemitraan yang sukses, terpercaya, dan berkelanjutan dalam jangka panjang bersama para pemilik kapal, operator armada, dan perusahaan maritim di seluruh dunia.</span>
+                    <span class="lang-en-only">We look forward to establishing a successful, trusted, and long-lasting partnership with ship owners, vessel operators, and maritime companies around the world.</span>
+                </p>
+            </div>
+
+            <div class="pt-4 flex justify-center">
+                <a href="contact.html" class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#061838] hover:bg-[#FFB800] text-white hover:text-[#061838] font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 group">
+                    <span class="lang-id-only leading-none">Hubungi Kami</span>
+                    <span class="lang-en-only leading-none">Contact Us</span>
+                    <svg class="w-4 h-4 flex-shrink-0 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    </main>
+
+    <!-- Global Footer (Corporate Dark Navy) -->
+    <footer class="bg-[#FFB800] text-[#061838] border-t-2 border-amber-500 shadow-2xl relative overflow-hidden" style="background-color: #FFB800 !important;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+            
+            <!-- Column 1: Company Brand & Licenses (5 cols) -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center space-x-3.5">
+                    <div class="w-12 h-12 bg-white p-1.5 rounded-2xl shadow-md border border-slate-200/80 flex items-center justify-center flex-shrink-0">
+                        <img src="images/logo-emblem.svg" alt="PT. Bahtera Anugerah Sentosa" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <h4 class="text-base sm:text-lg font-black text-[#061838] tracking-tight">
+                            PT. BAHTERA <span class="text-red-700">ANUGERAH</span> SENTOSA
+                        </h4>
+                        <p class="text-xs text-[#061838] font-extrabold uppercase tracking-wide">
+                            <span class="lang-id-only">Agensi Pengawakan &amp; Penyaluran Pelaut Resmi</span>
+                            <span class="lang-en-only">Official Crewing &amp; Manning Agency</span>
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-xs text-[#061838]/90 leading-relaxed max-w-md font-semibold">
+                    <span class="lang-id-only">
+                        Mitra strategis dan tepercaya penyedia tenaga pelaut Indonesia yang kompeten, berdisiplin tinggi, dan bersertifikasi internasional (SIUKAK &amp; SIUPPAK) untuk armada kapal niaga dan perikanan global.
+                    </span>
+                    <span class="lang-en-only">
+                        Your trusted partner in providing highly qualified, reliable, and certified seafarers (SIUKAK &amp; SIUPPAK) to the international maritime industry.
+                    </span>
+                </p>
+
+                <!-- Licenses Badges in Clean White Cards -->
+                <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-md">
+                    <div class="p-3.5 rounded-xl bg-white border border-amber-600/30 shadow-sm flex items-center space-x-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 flex-shrink-0 animate-pulse"></span>
+                        <div class="text-xs">
+                            <span class="text-slate-600 block text-[10px] uppercase font-bold">
+                                <span class="lang-id-only">Lisensi Resmi SIUKAK</span>
+                                <span class="lang-en-only">SIUKAK Official License</span>
+                            </span>
+                            <span class="font-black text-[#061838] text-[11px]">No. 58.58-R / 2024</span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-amber-600/30 shadow-sm flex items-center space-x-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 flex-shrink-0 animate-pulse"></span>
+                        <div class="text-xs">
+                            <span class="text-slate-600 block text-[10px] uppercase font-bold">
+                                <span class="lang-id-only">Lisensi Resmi SIUPPAK</span>
+                                <span class="lang-en-only">SIUPPAK Official License</span>
+                            </span>
+                            <span class="font-black text-[#061838] text-[11px]">No. 65.21 / 2016</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (2 cols) -->
+            <div class="lg:col-span-2 space-y-3">
+                <h4 class="text-xs font-black uppercase tracking-wider text-[#061838] border-b-2 border-red-700 pb-2 mb-3">
+                    <span class="lang-id-only">Navigasi</span>
+                    <span class="lang-en-only">Quick Links</span>
+                </h4>
+                <ul class="space-y-2.5 text-xs font-bold text-[#061838]">
+                    <li><a href="index.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Beranda</span><span class="lang-en-only">Home</span></a></li>
+                    <li><a href="services.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Layanan Kami</span><span class="lang-en-only">Our Services</span></a></li>
+                    <li><a href="team.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Tim Kami</span><span class="lang-en-only">Our Team</span></a></li>
+                    <li><a href="gallery.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Galeri</span><span class="lang-en-only">Gallery</span></a></li>
+                    <li><a href="contact.html" class="hover:text-red-700 transition flex items-center gap-1.5">&rarr; <span class="lang-id-only">Hubungi Kami</span><span class="lang-en-only">Contact Us</span></a></li>
+                </ul>
+            </div>
+
+
+
+            <!-- Column 4: Contact & Office (3 cols) -->
+            <div class="lg:col-span-3 space-y-3">
+                <h4 class="text-xs font-black uppercase tracking-wider text-[#061838] border-b-2 border-red-700 pb-2 mb-3">
+                    <span class="lang-id-only">Kontak &amp; Lokasi</span>
+                    <span class="lang-en-only">Contact &amp; Office</span>
+                </h4>
+                <div class="space-y-3.5 text-xs text-[#061838]">
+                    <div class="flex items-start space-x-2.5">
+                        <svg class="w-4 h-4 text-red-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <p class="text-[11px] leading-relaxed font-bold">
+                            Jl. Telaga Citra / Perum Telaga Murni, Kec. Cikarang Barat, Kab. Bekasi, Jawa Barat 17530 - Indonesia
+                        </p>
+                    </div>
+
+                    <div class="flex items-center space-x-2.5">
+                        <svg class="w-4 h-4 text-[#061838] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <a href="tel:+622189106967" class="text-xs font-black hover:text-red-700 transition">(+62) 21 89106967</a>
+                    </div>
+
+                    <div class="flex items-start space-x-2.5">
+                        <svg class="w-4 h-4 text-[#061838] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <div class="flex flex-col space-y-1">
+                            <a href="mailto:pt_basn@outlook.co.id" class="text-xs font-black hover:text-red-700 transition">pt_basn@outlook.co.id</a>
+                            <a href="mailto:pt_basn@yahoo.co.id" class="text-xs font-black hover:text-red-700 transition">pt_basn@yahoo.co.id</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="mt-12 pt-6 border-t border-[#061838]/20 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#061838] font-bold">
+            <div>
+                <span>&copy; 2026 PT. BAHTERA ANUGERAH SENTOSA. All Rights Reserved.</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <span class="text-red-800 font-black">SIUKAK &bull; SIUPPAK Certified</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4 transition-all duration-300">
+        <div class="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <!-- Close -->
+            <button id="lightbox-close" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center transition shadow-lg focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <!-- Prev -->
+            <button id="lightbox-prev" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-lg focus:outline-none" aria-label="Previous photo">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <!-- Next -->
+            <button id="lightbox-next" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/50 hover:bg-[#FFB800] text-white hover:text-[#061838] flex items-center justify-center transition-all duration-200 shadow-lg focus:outline-none" aria-label="Next photo">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <!-- Counter -->
+            <span id="lightbox-counter" class="hidden absolute bottom-20 right-4 z-20 px-3 py-1 rounded-lg text-xs font-bold bg-black/60 text-white pointer-events-none"></span>
+            <!-- Image -->
+            <div class="max-h-[70vh] overflow-hidden flex items-center justify-center bg-slate-950">
+                <img id="lightbox-img" src="" alt="Gallery Preview" class="max-h-[70vh] w-auto object-contain transition-opacity duration-300">
+            </div>
+            <div class="p-6 bg-white border-t border-slate-100">
+                <h3 id="lightbox-title" class="text-lg font-bold text-slate-900 mb-1"></h3>
+                <p id="lightbox-desc" class="text-slate-600 text-sm font-medium"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Floating Quick Action Buttons (Bottom Right) -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end space-y-3">
+        <!-- WhatsApp Chat Button -->
+        <a href="https://wa.me/6280000000000?text=Halo%20PT.%20Bahtera%20Anugerah%20Sentosa,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20crewing." target="_blank" class="w-13 h-13 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center p-3.5 transition duration-200 transform hover:scale-110 group relative" title="Hubungi Kami via WhatsApp">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold py-1.5 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Konsultasi WhatsApp</span>
+        </a>
+
+        <!-- Help / Contact Button -->
+        <a href="contact.html" class="w-13 h-13 bg-white hover:bg-slate-50 text-slate-800 rounded-full shadow-xl border border-slate-200 flex items-center justify-center p-3.5 transition duration-200 transform hover:scale-110 group relative" title="Pusat Informasi & Bantuan">
+            <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold py-1.5 px-3 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Bantuan &amp; Kontak</span>
+        </a>
+    </div>
+
+    
+    <script>
+    // Standalone Static Bundle Runner (Works with file:// and on Vercel)
+    window.setLanguage = function(lang) {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        try { localStorage.setItem('pt_bks_lang', lang); } catch(e){}
+        document.querySelectorAll('[data-set-lang]').forEach(function(el) {
+            var btnLang = el.getAttribute('data-set-lang');
+            if (btnLang === lang) {
+                el.classList.add('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.remove('text-white');
+            } else {
+                el.classList.remove('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.add('text-white');
+            }
+        });
+    };
+
+    // PT. Bahtera Anugerah Sentosa - Interactive Scripts
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Language Toggle (ID / EN)
+    const initLanguage = () => {
+        const savedLang = localStorage.getItem('pt_bks_lang') || 'id';
+        setLanguage(savedLang);
+
+        const langBtns = document.querySelectorAll('[data-set-lang], .lang-toggle-btn, .lang-flag-btn');
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetLang = btn.getAttribute('data-set-lang');
+                if (targetLang) {
+                    setLanguage(targetLang);
+                }
+            });
+        });
+    };
+
+    const setLanguage = (lang) => {
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem('pt_bks_lang', lang);
+
+        document.querySelectorAll('[data-set-lang]').forEach(el => {
+            const btnLang = el.getAttribute('data-set-lang');
+            if (btnLang === lang) {
+                el.classList.add('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.remove('text-white');
+            } else {
+                el.classList.remove('bg-[#FFB800]', 'text-[#061838]', 'font-black', 'shadow-sm');
+                el.classList.add('text-white');
+            }
+        });
+    };
+
+    initLanguage();
+
+    // 2. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    if (mobileMenuClose && mobileMenu) {
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    }
+
+    // 3. Gallery Lightbox Modal
+    const modal = document.getElementById('gallery-lightbox');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalDesc = document.getElementById('lightbox-desc');
+    const modalClose = document.getElementById('lightbox-close');
+
+    if (modal) {
+        document.querySelectorAll('.gallery-item-trigger').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.getAttribute('data-img-src');
+                const title = item.getAttribute('data-img-title') || '';
+                const desc = item.getAttribute('data-img-desc') || '';
+
+                if (modalImg) modalImg.src = src;
+                if (modalTitle) modalTitle.textContent = title;
+                if (modalDesc) modalDesc.textContent = desc;
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });
+
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        });
+    }
+
+    // 4. PDF File Upload Handler (For Contact Form)
+    const fileInput = document.getElementById('pdf_file');
+    const fileDropZone = document.getElementById('pdf_drop_zone');
+    const filePreview = document.getElementById('pdf_file_preview');
+    const fileNameDisplay = document.getElementById('pdf_file_name');
+    const fileSizeDisplay = document.getElementById('pdf_file_size');
+    const fileRemoveBtn = document.getElementById('pdf_remove_btn');
+
+    if (fileInput && fileDropZone) {
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                fileDropZone.classList.add('border-amber-400', 'bg-amber-500/10');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                fileDropZone.classList.remove('border-amber-400', 'bg-amber-500/10');
+            }, false);
+        });
+
+        fileDropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files.length > 0) {
+                handleFile(fileInput.files[0]);
+            }
+        });
+
+        if (fileRemoveBtn) {
+            fileRemoveBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                if (filePreview) filePreview.classList.add('hidden');
+                if (fileDropZone) fileDropZone.classList.remove('hidden');
+            });
+        }
+
+        function handleFile(file) {
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Hanya file dokumen PDF yang diperbolehkan! / Only PDF files are allowed.');
+                fileInput.value = '';
+                return;
+            }
+
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Ukuran file maksimal 10MB! / Maximum file size is 10MB.');
+                fileInput.value = '';
+                return;
+            }
+
+            if (fileNameDisplay) fileNameDisplay.textContent = file.name;
+            if (fileSizeDisplay) fileSizeDisplay.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+            if (filePreview) filePreview.classList.remove('hidden');
+            if (fileDropZone) fileDropZone.classList.add('hidden');
+        }
+    }
+
+    // 5. Scroll Fade-in Animations (IntersectionObserver)
+    const fadeObserverOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.12
+    };
+
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, fadeObserverOptions);
+
+    const animatedElements = document.querySelectorAll('.fade-in-section, .fade-in-left, .fade-in-right, .fade-in-scale');
+    animatedElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        // If element is at top of page on initial load (Hero), reveal with smooth intro
+        if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+            setTimeout(() => {
+                el.classList.add('is-visible');
+            }, 120);
+        } else {
+            fadeObserver.observe(el);
+        }
+    });
+
+    // 6. Departure Process Slideshow
+    // NOTE: Controlled by inline script in gallery.blade.php to support lightbox integration.
+    // Do not add a duplicate controller here.
+});
+
+
+    // Immediate reveal safeguard for static previews
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.fade-in-section, .fade-in-left, .fade-in-right, .fade-in-scale').forEach(function(el) {
+            el.classList.add('is-visible');
+        });
+        var savedLang = 'id';
+        try { savedLang = localStorage.getItem('pt_bks_lang') || 'id'; } catch(e){}
+        window.setLanguage(savedLang);
+    });
+    </script>
+
+</body>
+</html>
